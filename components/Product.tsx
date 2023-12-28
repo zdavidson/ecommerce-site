@@ -3,12 +3,16 @@ import Image from "next/image";
 import React from "react";
 import { Button } from "./Button";
 import ProductCounter from "./ProductCounter";
+import { useAppSelector } from "../store/hooks";
+import { selectCart } from "../store/cartSlice";
 
 interface Props {
   product: any;
 }
 
 const Product = ({ product }: Props) => {
+  const { cart } = useAppSelector((state) => state.cart);
+  console.log(cart);
   return (
     <Container
       sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}

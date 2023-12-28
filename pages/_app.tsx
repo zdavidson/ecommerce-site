@@ -12,6 +12,8 @@ import createEmotionCache from "../utility/createEmotionCache";
 import lightThemeOptions from "../styles/theme/lightThemeOptions";
 import "../styles/globals.css";
 import Nav from "../components/Nav";
+import { Provider } from "react-redux";
+import { store } from "../store/store";
 interface MyAppProps extends AppProps {
   emotionCache?: EmotionCache;
 }
@@ -24,12 +26,14 @@ const MyApp: React.FunctionComponent<MyAppProps> = (props) => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
 
   return (
-    <CacheProvider value={emotionCache}>
-      <ThemeProvider theme={lightTheme}>
-        <CssBaseline />
-        <Component {...pageProps} />
-      </ThemeProvider>
-    </CacheProvider>
+    <Provider store={store}>
+      <CacheProvider value={emotionCache}>
+        <ThemeProvider theme={lightTheme}>
+          <CssBaseline />
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </CacheProvider>
+    </Provider>
   );
 };
 
