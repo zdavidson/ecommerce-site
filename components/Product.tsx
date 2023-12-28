@@ -1,24 +1,24 @@
-import { Box, Container, Typography } from "@mui/material";
+import { Box, Container, Typography, Button as MUIButton } from "@mui/material";
 import Image from "next/image";
 import React from "react";
 import { Button } from "./Button";
 import ProductCounter from "./ProductCounter";
-import { useAppSelector } from "../store/hooks";
-import { selectCart } from "../store/cartSlice";
+import { useAppDispatch } from "../store/hooks";
+import { addToCart, startNewCart } from "../store/cartSlice";
 
 interface Props {
   product: any;
 }
 
 const Product = ({ product }: Props) => {
-  const { cart } = useAppSelector((state) => state.cart);
-  console.log(cart);
+  const dispatch = useAppDispatch();
+
   return (
     <Container
       sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
     >
       <Image
-        src={product.image.desktop.replace(".", "")}
+        src={product.image?.desktop.replace(".", "") || ""}
         width={500}
         height={500}
         alt="headphones"
@@ -64,8 +64,22 @@ const Product = ({ product }: Props) => {
         </Typography>
         <Typography variant="h5">{product.price}</Typography>
         <Box sx={{ display: "flex", alignItems: "center" }}>
-          <ProductCounter />
-          <Button variant="contained" color="#d97d45">
+          <ProductCounter productId={product.id} />
+          <Button
+            variant="contained"
+            color="#d97d45"
+            onClick={() => {
+              dispatch(startNewCart());
+              dispatch(
+                addToCart({
+                  id: product.id,
+                  name: product.name,
+                  price: product.price,
+                  image: product.image.mobile.replace(".", ""),
+                })
+              );
+            }}
+          >
             Add to Cart
           </Button>
         </Box>

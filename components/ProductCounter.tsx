@@ -1,8 +1,14 @@
 import { Box, Button } from "@mui/material";
 import React, { useState } from "react";
+import { useAppDispatch, useAppSelector } from "../store/hooks";
 
-const ProductCounter = () => {
+interface Props {
+  productId: number;
+}
+
+const ProductCounter = ({ productId }: Props) => {
   const [count, setCount] = useState(0);
+
   return (
     <Box
       sx={{
@@ -11,9 +17,21 @@ const ProductCounter = () => {
         marginRight: "0.5rem",
       }}
     >
-      <Button onClick={() => setCount(count - 1)}>-</Button>
+      <Button
+        onClick={() => {
+          setCount(count - 1);
+        }}
+      >
+        -
+      </Button>
       {count}
-      <Button onClick={() => setCount(count + 1)}>+</Button>
+      <Button
+        onClick={() => {
+          setCount(count + 1);
+        }}
+      >
+        +
+      </Button>
     </Box>
   );
 };

@@ -1,8 +1,12 @@
 import { Box, Typography } from "@mui/material";
 import React from "react";
 import { Button } from "./Button";
+import Image from "next/image";
+import { useAppSelector } from "../store/hooks";
 
 const Cart = () => {
+  const { cart } = useAppSelector((state) => state.cart);
+  console.log(cart);
   return (
     <Box
       sx={{
@@ -32,7 +36,27 @@ const Cart = () => {
           <Typography>Cart</Typography>
           <Typography>Remove All</Typography>
         </Box>
-        <Box>PRODUCTS</Box>
+        {cart.map((product) => {
+          return (
+            <Box key={product.id} sx={{ display: "flex" }}>
+              <Box sx={{ display: "flex" }}>
+                <Image
+                  src={product.image}
+                  width={50}
+                  height={50}
+                  alt="headphones"
+                />
+                <Box sx={{ display: "flex", flexDirection: "column" }}>
+                  <Typography variant="body1">{product.name}</Typography>
+                  <Typography variant="body2" sx={{ color: " #6f7275" }}>
+                    {product.price}
+                  </Typography>
+                </Box>
+              </Box>
+              <Typography variant="body1">{product.count}</Typography>
+            </Box>
+          );
+        })}
         <Box sx={{ display: "flex", justifyContent: "space-between" }}>
           <Typography>Total</Typography>
           <Typography>$$$</Typography>
