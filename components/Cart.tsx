@@ -1,12 +1,14 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, Button as MUIButton } from "@mui/material";
 import React from "react";
 import { Button } from "./Button";
 import Image from "next/image";
-import { useAppSelector } from "../store/hooks";
+import { useAppDispatch, useAppSelector } from "../store/hooks";
+import { clearCart } from "../store/cartSlice";
 
 const Cart = () => {
   const { cart } = useAppSelector((state) => state.cart);
-  console.log(cart);
+  const dispatch = useAppDispatch();
+
   return (
     <Box
       sx={{
@@ -34,11 +36,13 @@ const Cart = () => {
       >
         <Box sx={{ display: "flex", justifyContent: "space-between" }}>
           <Typography>Cart</Typography>
-          <Typography>Remove All</Typography>
+          <MUIButton onClick={() => dispatch(clearCart())}>
+            Remove All
+          </MUIButton>
         </Box>
         {cart.map((product) => {
           return (
-            <Box key={product.id} sx={{ display: "flex" }}>
+            <Box key={product.id} sx={{ display: "flex", margin: "1rem 0" }}>
               <Box sx={{ display: "flex" }}>
                 <Image
                   src={product.image}
@@ -46,7 +50,13 @@ const Cart = () => {
                   height={50}
                   alt="headphones"
                 />
-                <Box sx={{ display: "flex", flexDirection: "column" }}>
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    marginLeft: "1rem",
+                  }}
+                >
                   <Typography variant="body1">{product.name}</Typography>
                   <Typography variant="body2" sx={{ color: " #6f7275" }}>
                     {product.price}

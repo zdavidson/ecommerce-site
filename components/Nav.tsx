@@ -22,12 +22,14 @@ const Nav = () => {
           alignItems: "center",
         }}
       >
-        <Image
-          src="./assets/shared/desktop/logo.svg"
-          alt="logo"
-          width={150}
-          height={30}
-        />
+        <Link href="/">
+          <Image
+            src="./assets/shared/desktop/logo.svg"
+            alt="logo"
+            width={150}
+            height={30}
+          />
+        </Link>
         <ul style={{ textTransform: "uppercase", textDecoration: "none" }}>
           <Link href="/" style={{ marginRight: "2rem", fontWeight: 700 }}>
             Home
