@@ -42,7 +42,14 @@ const Cart = () => {
         </Box>
         {cart.map((product) => {
           return (
-            <Box key={product.id} sx={{ display: "flex", margin: "1rem 0" }}>
+            <Box
+              key={product.id}
+              sx={{
+                display: "flex",
+                margin: "1rem 0",
+                justifyContent: "space-between",
+              }}
+            >
               <Box sx={{ display: "flex" }}>
                 <Image
                   src={product.image}
@@ -63,7 +70,18 @@ const Cart = () => {
                   </Typography>
                 </Box>
               </Box>
-              <Typography variant="body1">{product.count}</Typography>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "flex-end",
+                }}
+              >
+                <Typography sx={{ fontSize: "0.75rem" }}>Count</Typography>
+                <Typography variant="body1" sx={{ fontWeight: 800 }}>
+                  {product.count}
+                </Typography>
+              </Box>
             </Box>
           );
         })}

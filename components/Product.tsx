@@ -1,6 +1,6 @@
 import { Box, Container, Typography, Button as MUIButton } from "@mui/material";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "./Button";
 import ProductCounter from "./ProductCounter";
 import { useAppDispatch } from "../store/hooks";
@@ -12,6 +12,7 @@ interface Props {
 
 const Product = ({ product }: Props) => {
   const dispatch = useAppDispatch();
+  const [count, setCount] = useState(0);
 
   return (
     <Container
@@ -62,9 +63,33 @@ const Product = ({ product }: Props) => {
         >
           {product.description}
         </Typography>
-        <Typography variant="h5">{product.price}</Typography>
+        <Typography variant="h5" sx={{ marginBottom: "2rem", fontWeight: 700 }}>
+          ${product.price}
+        </Typography>
         <Box sx={{ display: "flex", alignItems: "center" }}>
-          <ProductCounter productId={product.id} />
+          <Box
+            sx={{
+              backgroundColor: "#f1f1f1",
+              padding: "0.75rem",
+              marginRight: "0.5rem",
+            }}
+          >
+            <MUIButton
+              onClick={() => {
+                setCount(count - 1);
+              }}
+            >
+              -
+            </MUIButton>
+            {count}
+            <MUIButton
+              onClick={() => {
+                setCount(count + 1);
+              }}
+            >
+              +
+            </MUIButton>
+          </Box>
           <Button
             variant="contained"
             color="#d97d45"
@@ -76,6 +101,7 @@ const Product = ({ product }: Props) => {
                   name: product.name,
                   price: product.price,
                   image: product.image.mobile.replace(".", ""),
+                  count: count,
                 })
               );
             }}
