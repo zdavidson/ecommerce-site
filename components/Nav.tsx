@@ -1,11 +1,13 @@
-import { Button, Container } from "@mui/material";
+import { Button, Container, Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 import Cart from "./Cart";
+import { useAppSelector } from "../store/hooks";
 
 const Nav = () => {
   const [showCart, setShowCart] = useState(false);
+  const { cart } = useAppSelector((state) => state.cart);
   return (
     <div
       style={{
@@ -51,6 +53,9 @@ const Nav = () => {
             width={30}
             height={30}
           />
+          <Typography sx={{ marginLeft: "0.5rem", color: "white" }}>
+            ({cart.length})
+          </Typography>
         </Button>
       </Container>
       {showCart ? <Cart /> : null}
