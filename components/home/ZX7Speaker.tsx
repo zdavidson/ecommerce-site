@@ -22,7 +22,7 @@ const ZX7Speaker = () => {
           <Typography variant="h4" sx={{ marginBottom: "1rem" }}>
             ZX7 SPEAKER
           </Typography>
-          <Button variant="outlined" color="null">
+          <Button variant="outlined" color="black">
             <Link href="/5">SEE PRODUCT</Link>
           </Button>
         </Box>
