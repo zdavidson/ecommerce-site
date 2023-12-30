@@ -12,7 +12,6 @@ const Nav = () => {
     <div
       style={{
         padding: "2rem 0",
-
         color: "white",
         backgroundColor: "#191919",
       }}
@@ -36,7 +35,10 @@ const Nav = () => {
           <Link href="/" style={{ marginRight: "2rem", fontWeight: 700 }}>
             Home
           </Link>
-          <Link href="/" style={{ marginRight: "2rem", fontWeight: 700 }}>
+          <Link
+            href="/headphones"
+            style={{ marginRight: "2rem", fontWeight: 700 }}
+          >
             Headphones
           </Link>
           <Link href="/" style={{ marginRight: "2rem", fontWeight: 700 }}>
