@@ -14,7 +14,7 @@ interface Props {
 const ProductFeatures = ({ features, includes }: Props) => {
   return (
     <Container>
-      <Box sx={{ display: "flex" }}>
+      <Box sx={{ display: "flex", marginBottom: "8rem" }}>
         <Box
           sx={{
             display: "flex",

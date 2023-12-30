@@ -8,6 +8,7 @@ import { Footer } from "../components/shared/Footer";
 import CategoryCardContainer from "../components/CategoryCardContainer";
 import ProductFeatures from "../components/shared/ProductFeatures";
 import ProductGallery from "../components/shared/ProductGallery";
+import Recommendations from "../components/shared/Recommendations";
 
 const ProductDetails = () => {
   const router = useRouter();
@@ -24,6 +25,7 @@ const ProductDetails = () => {
       second: { desktop: "" },
       third: { desktop: "" },
     },
+    others: [],
   });
 
   useEffect(() => {
@@ -52,8 +54,9 @@ const ProductDetails = () => {
         features={product.features}
         includes={product.includes}
       />
-      <CategoryCardContainer />
       <ProductGallery gallery={product.gallery} />
+      <Recommendations recommendations={product.others} />
+      <CategoryCardContainer />
       <About />
       <Footer />
     </Box>
