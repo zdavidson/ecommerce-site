@@ -2,16 +2,22 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "./store";
 
+interface CartItem {
+  id: number;
+  image: string;
+  name: string;
+  count: number;
+  price: number;
+}
+
 // Define a type for the slice state
 interface CartState {
-  cart: [
-    { id: number; image: string; name: string; count: number; price: number }
-  ];
+  cart: CartItem[] | any[];
 }
 
 // Define the initial state using that type
 const initialState: CartState = {
-  cart: [{ id: 0, image: "", name: "", count: 0, price: 0 }],
+  cart: [],
 };
 
 export const cartSlice = createSlice({
@@ -22,16 +28,13 @@ export const cartSlice = createSlice({
     addToCart: (state, action: PayloadAction<any>) => {
       state.cart.push(action.payload);
     },
-    startNewCart: (state) => {
-      state.cart.shift();
-    },
     clearCart: (state) => {
-      state.cart = [{ id: 0, image: "", name: "", count: 0, price: 0 }];
+      state.cart = [];
     },
   },
 });
 
-export const { addToCart, startNewCart, clearCart } = cartSlice.actions;
+export const { addToCart, clearCart } = cartSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
 export const selectCart = (state: RootState) => state.cart.cart;

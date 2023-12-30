@@ -2,9 +2,8 @@ import { Box, Container, Typography, Button as MUIButton } from "@mui/material";
 import Image from "next/image";
 import React, { useState } from "react";
 import { Button } from "./Button";
-import ProductCounter from "./ProductCounter";
 import { useAppDispatch } from "../store/hooks";
-import { addToCart, startNewCart } from "../store/cartSlice";
+import { addToCart } from "../store/cartSlice";
 
 interface Props {
   product: any;
@@ -94,7 +93,6 @@ const Product = ({ product }: Props) => {
             variant="contained"
             color="#d97d45"
             onClick={() => {
-              dispatch(startNewCart());
               dispatch(
                 addToCart({
                   id: product.id,
