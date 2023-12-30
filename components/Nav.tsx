@@ -41,10 +41,16 @@ const Nav = () => {
           >
             Headphones
           </Link>
-          <Link href="/" style={{ marginRight: "2rem", fontWeight: 700 }}>
+          <Link
+            href="/speakers"
+            style={{ marginRight: "2rem", fontWeight: 700 }}
+          >
             Speakers
           </Link>
-          <Link href="/" style={{ marginRight: "2rem", fontWeight: 700 }}>
+          <Link
+            href="/earphones"
+            style={{ marginRight: "2rem", fontWeight: 700 }}
+          >
             Earphones
           </Link>
         </ul>

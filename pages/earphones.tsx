@@ -5,13 +5,11 @@ import Nav from "../components/Nav";
 import About from "../components/shared/About";
 import { Footer } from "../components/shared/Footer";
 import CategoryPageHeader from "../components/shared/CategoryPageHeader";
-import CategoryItemImage from "../components/shared/CategoryItemImage";
-import CategoryItemDescription from "../components/shared/CategoryItemDescription";
-import { Box } from "@mui/material";
+
 import CategoryItemContainer from "../components/shared/CategoryItemContainer";
 
 const Headphones: NextPage = () => {
-  const category = "headphones";
+  const category = "earphones";
   const [data, setData] = useState<any>([]);
   const [isLoading, setLoading] = useState(true);
   const products = Array.from(new Set(data));

@@ -11,7 +11,7 @@ import { Box } from "@mui/material";
 import CategoryItemContainer from "../components/shared/CategoryItemContainer";
 
 const Headphones: NextPage = () => {
-  const category = "headphones";
+  const category = "speakers";
   const [data, setData] = useState<any>([]);
   const [isLoading, setLoading] = useState(true);
   const products = Array.from(new Set(data));

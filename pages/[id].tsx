@@ -3,6 +3,11 @@ import Nav from "../components/Nav";
 import { Box } from "@mui/material";
 import Product from "../components/Product";
 import { useRouter } from "next/router";
+import About from "../components/shared/About";
+import { Footer } from "../components/shared/Footer";
+import CategoryCardContainer from "../components/CategoryCardContainer";
+import ProductFeatures from "../components/shared/ProductFeatures";
+import ProductGallery from "../components/shared/ProductGallery";
 
 const ProductDetails = () => {
   const router = useRouter();
@@ -10,7 +15,16 @@ const ProductDetails = () => {
 
   const [data, setData] = useState([{ id: "0" }]);
   const [isLoading, setLoading] = useState(true);
-  const [product, setProduct] = useState({ id: "0" });
+  const [product, setProduct] = useState({
+    id: "0",
+    features: "",
+    includes: [],
+    gallery: {
+      first: { desktop: "" },
+      second: { desktop: "" },
+      third: { desktop: "" },
+    },
+  });
 
   useEffect(() => {
     fetch("/api/data")
@@ -34,6 +48,14 @@ const ProductDetails = () => {
     <Box>
       <Nav />
       <Product product={product} />
+      <ProductFeatures
+        features={product.features}
+        includes={product.includes}
+      />
+      <CategoryCardContainer />
+      <ProductGallery gallery={product.gallery} />
+      <About />
+      <Footer />
     </Box>
   );
 };

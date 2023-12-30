@@ -17,7 +17,7 @@ const CategoryItemContainer = ({ item }: Props) => {
           justifyContent: "space-between",
         }}
       >
-        {item.id % 2 !== 0 ? (
+        {item.id % 2 === 0 ? (
           <CategoryItemImage
             src={item.image.desktop.replace(".", "")}
             name={item.name}
@@ -29,7 +29,7 @@ const CategoryItemContainer = ({ item }: Props) => {
           description={item.description}
           id={item.id}
         />
-        {item.id % 2 === 0 ? (
+        {item.id % 2 !== 0 ? (
           <CategoryItemImage
             src={item.image.desktop.replace(".", "")}
             name={item.name}
