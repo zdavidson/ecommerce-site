@@ -23,7 +23,7 @@ const ZX7Speaker = () => {
             ZX7 SPEAKER
           </Typography>
           <Button variant="outlined" color="black">
-            <Link href="/5">SEE PRODUCT</Link>
+            <Link href="/zx7-speaker">SEE PRODUCT</Link>
           </Button>
         </Box>
       </Box>

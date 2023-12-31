@@ -36,7 +36,7 @@ const YX1Earphones = () => {
             YX1 EARPHONES
           </Typography>
           <Button variant="outlined" color="black">
-            <Link href="/1">SEE PRODUCT</Link>
+            <Link href="/yx1-earphones">SEE PRODUCT</Link>
           </Button>
         </Box>
       </Box>

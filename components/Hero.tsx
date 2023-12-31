@@ -45,7 +45,7 @@ const Hero = () => {
         for the passionate music enthusiast.
       </Typography>
       <Button variant="contained" color="#d97d45">
-        <Link href="/4">See Product</Link>
+        <Link href="/xx99-mark-two-headphones">See Product</Link>
       </Button>
     </Box>
   );

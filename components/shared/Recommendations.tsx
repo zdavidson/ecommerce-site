@@ -2,6 +2,7 @@ import { Box, Container, Typography } from "@mui/material";
 import React from "react";
 import Image from "next/image";
 import { Button } from "../Button";
+import Link from "next/link";
 
 interface Props {
   recommendations: any[];
@@ -43,7 +44,7 @@ const Recommendations = ({ recommendations }: Props) => {
                 <Image
                   src={product.image.desktop.replace(".", "")}
                   alt={product.name}
-                  width={375}
+                  width={350}
                   height={350}
                 />
                 <Typography
@@ -58,7 +59,7 @@ const Recommendations = ({ recommendations }: Props) => {
                   {product.name}
                 </Typography>
                 <Button variant="contained" color="#d87d4a">
-                  See Product
+                  <Link href={`/${product.slug}`}>See Product</Link>
                 </Button>
               </Box>
             );

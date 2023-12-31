@@ -7,10 +7,10 @@ interface Props {
   isNew: boolean;
   name: string;
   description: string;
-  id: string | number;
+  slug: string;
 }
 
-const CategoryItemDescription = ({ isNew, name, description, id }: Props) => {
+const CategoryItemDescription = ({ isNew, name, description, slug }: Props) => {
   return (
     <Box
       sx={{
@@ -54,7 +54,7 @@ const CategoryItemDescription = ({ isNew, name, description, id }: Props) => {
         {description}
       </Typography>
       <Button variant="contained" color="#d97d45">
-        <Link href={`/${id}`}>See Product</Link>
+        <Link href={`/${slug}`}>See Product</Link>
       </Button>
     </Box>
   );

@@ -12,7 +12,7 @@ import Recommendations from "../components/shared/Recommendations";
 
 const ProductDetails = () => {
   const router = useRouter();
-  const { id } = router.query;
+  const { slug } = router.query;
 
   const [data, setData] = useState([{ id: "0" }]);
   const [isLoading, setLoading] = useState(true);
@@ -35,12 +35,12 @@ const ProductDetails = () => {
         setData(response);
         setLoading(false);
         response.map((item: any) => {
-          if (item.id.toString() === id) {
+          if (item.slug === slug) {
             setProduct(item);
           }
         });
       });
-  }, [id]);
+  }, [slug]);
 
   if (isLoading) {
     return <p>Loading...</p>;
