@@ -4,11 +4,11 @@ import { Button } from "./Button";
 import Image from "next/image";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { clearCart } from "../store/cartSlice";
+import Link from "next/link";
 
 const Cart = () => {
   const { cart } = useAppSelector((state) => state.cart);
   const dispatch = useAppDispatch();
-  console.log(cart);
 
   return (
     <Box
@@ -95,7 +95,7 @@ const Cart = () => {
           variant="contained"
           sx={{ width: "100%", marginTop: "1rem" }}
         >
-          Checkout
+          <Link href="/checkout">Checkout</Link>
         </Button>
       </Box>
     </Box>
