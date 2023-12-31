@@ -1,11 +1,12 @@
 import React from "react";
 import MuiButton from "@mui/material/Button";
+import { SxProps, Theme } from "@mui/material";
 
 interface Props {
   color: string;
   variant: "text" | "outlined" | "contained";
   children: React.ReactNode;
-  sx?: any;
+  sx?: SxProps<Theme>;
   onClick?: () => void;
 }
 

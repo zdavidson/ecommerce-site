@@ -1,12 +1,7 @@
 import { Box, Button } from "@mui/material";
 import React, { useState } from "react";
-import { useAppDispatch, useAppSelector } from "../store/hooks";
 
-interface Props {
-  productId: number;
-}
-
-const ProductCounter = ({ productId }: Props) => {
+const ProductCounter = () => {
   const [count, setCount] = useState(0);
 
   return (

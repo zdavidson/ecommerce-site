@@ -4,9 +4,10 @@ import React, { useState } from "react";
 import { Button } from "./Button";
 import { useAppDispatch } from "../store/hooks";
 import { addToCart } from "../store/cartSlice";
+import { APIProduct } from "../types";
 
 interface Props {
-  product: any;
+  product: APIProduct;
 }
 
 const Product = ({ product }: Props) => {
@@ -93,15 +94,7 @@ const Product = ({ product }: Props) => {
             variant="contained"
             color="#d97d45"
             onClick={() => {
-              dispatch(
-                addToCart({
-                  id: product.id,
-                  name: product.name,
-                  price: product.price,
-                  image: product.image.mobile.replace(".", ""),
-                  count: count,
-                })
-              );
+              dispatch(addToCart({ ...product, count }));
             }}
           >
             Add to Cart

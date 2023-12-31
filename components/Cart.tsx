@@ -8,6 +8,7 @@ import { clearCart } from "../store/cartSlice";
 const Cart = () => {
   const { cart } = useAppSelector((state) => state.cart);
   const dispatch = useAppDispatch();
+  console.log(cart);
 
   return (
     <Box
@@ -52,7 +53,7 @@ const Cart = () => {
             >
               <Box sx={{ display: "flex" }}>
                 <Image
-                  src={product.image}
+                  src={product.image.mobile.replace(".", "")}
                   width={50}
                   height={50}
                   alt="headphones"
@@ -66,7 +67,7 @@ const Cart = () => {
                 >
                   <Typography variant="body1">{product.name}</Typography>
                   <Typography variant="body2" sx={{ color: " #6f7275" }}>
-                    {product.price}
+                    ${product.price}
                   </Typography>
                 </Box>
               </Box>

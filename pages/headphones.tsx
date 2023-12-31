@@ -9,10 +9,11 @@ import CategoryItemImage from "../components/shared/CategoryItemImage";
 import CategoryItemDescription from "../components/shared/CategoryItemDescription";
 import { Box } from "@mui/material";
 import CategoryItemContainer from "../components/shared/CategoryItemContainer";
+import { APIProduct } from "../types";
 
 const Headphones: NextPage = () => {
   const category = "headphones";
-  const [data, setData] = useState<any>([]);
+  const [data, setData] = useState<APIProduct[]>([]);
   const [isLoading, setLoading] = useState(true);
   const products = Array.from(new Set(data));
 
@@ -21,7 +22,7 @@ const Headphones: NextPage = () => {
       .then((res) => res.json())
       .then((response) => {
         setLoading(false);
-        response.map((item: any) => {
+        response.map((item: APIProduct) => {
           if (item.category === category) {
             data.unshift(item);
           }
@@ -38,7 +39,7 @@ const Headphones: NextPage = () => {
       <Nav />
       <CategoryPageHeader category={category} />
 
-      {products.map((item: any) => {
+      {products.map((item) => {
         return <CategoryItemContainer item={item} key={item.id} />;
       })}
 

@@ -9,23 +9,96 @@ import CategoryCardContainer from "../components/CategoryCardContainer";
 import ProductFeatures from "../components/shared/ProductFeatures";
 import ProductGallery from "../components/shared/ProductGallery";
 import Recommendations from "../components/shared/Recommendations";
+import { APIProduct } from "../types";
 
 const ProductDetails = () => {
   const router = useRouter();
   const { slug } = router.query;
 
-  const [data, setData] = useState([{ id: "0" }]);
+  const [data, setData] = useState<APIProduct[]>([]);
   const [isLoading, setLoading] = useState(true);
-  const [product, setProduct] = useState({
-    id: "0",
-    features: "",
-    includes: [],
-    gallery: {
-      first: { desktop: "" },
-      second: { desktop: "" },
-      third: { desktop: "" },
+  const [product, setProduct] = useState<APIProduct>({
+    id: 0,
+    slug: "",
+    name: "",
+    image: {
+      mobile: "",
+      tablet: "",
+      desktop: "",
     },
-    others: [],
+    category: "",
+    new: true,
+    price: 0,
+    description: "",
+    features: "",
+    includes: [
+      {
+        quantity: 0,
+        item: "",
+      },
+      {
+        quantity: 0,
+        item: "",
+      },
+      {
+        quantity: 0,
+        item: "",
+      },
+      {
+        quantity: 0,
+        item: "",
+      },
+      {
+        quantity: 0,
+        item: "",
+      },
+    ],
+    gallery: {
+      first: {
+        mobile: "",
+        tablet: "",
+        desktop: "",
+      },
+      second: {
+        mobile: "",
+        tablet: "",
+        desktop: "",
+      },
+      third: {
+        mobile: "",
+        tablet: "",
+        desktop: "",
+      },
+    },
+    others: [
+      {
+        slug: "",
+        name: "",
+        image: {
+          mobile: "",
+          tablet: "",
+          desktop: "",
+        },
+      },
+      {
+        slug: "",
+        name: "",
+        image: {
+          mobile: "",
+          tablet: "",
+          desktop: "",
+        },
+      },
+      {
+        slug: "",
+        name: "",
+        image: {
+          mobile: "",
+          tablet: "",
+          desktop: "",
+        },
+      },
+    ],
   });
 
   useEffect(() => {
@@ -34,7 +107,7 @@ const ProductDetails = () => {
       .then((response) => {
         setData(response);
         setLoading(false);
-        response.map((item: any) => {
+        response.map((item: APIProduct) => {
           if (item.slug === slug) {
             setProduct(item);
           }
